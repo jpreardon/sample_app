@@ -29,5 +29,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "title", "Contact | #{@base_title}"
   end
+  
+  # Added because somebody changed the app name at some point, by accident
+  test "should get correct app title" do
+    get root_path
+    assert_select "#logo", "Sample App" 
+  end
 
 end
