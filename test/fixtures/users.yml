@@ -1,0 +1,4 @@
+keith:
+  name: Keith Richards
+  email: keith@thestones.co.uk
+  password_digest: <%= User.digest('123456') %>
