@@ -17,7 +17,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   
   test 'layout links (logged in)' do
     # Home, Help, Users, Profile, Settings, Logout
-    log_in_as(@user, password: '123456')
+    log_in_as(@user)
     get root_path
     assert_template 'static_pages/home'
     assert_select 'nav a[href=?]', root_path

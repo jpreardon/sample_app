@@ -1,12 +1,12 @@
 keith:
   name: Keith Richards
   email: keith@thestones.co.uk
-  password_digest: <%= User.digest('123456') %>
+  password_digest: <%= User.digest('password') %>
   
 mick:
   name: Mick Jagger
   email: mick@thestones.co.uk
-  password_digest: <%= User.digest('123456') %>
+  password_digest: <%= User.digest('password') %>
   
 <% 30.times do |n| %>
 user_<%= n %>:

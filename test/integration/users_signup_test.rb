@@ -20,8 +20,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count' do
       post users_path, params: { user: { name: 'Example Guy',
                                           email: 'example@guy.com',
-                                          password: '123456',
-                                          password_confirmation: '123456' } }
+                                          password: 'password',
+                                          password_confirmation: 'password' } }
     end
     follow_redirect!
     assert_template 'users/show'
