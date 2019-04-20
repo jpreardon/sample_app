@@ -36,7 +36,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@otheruser, password: '123456')
     patch user_path(@user), params: { user: { name: @user.name,
                                           email: @user. email } }
-    assert_not flash.empty?
+    assert flash.empty?
     assert_redirected_to root_url
   end
 
