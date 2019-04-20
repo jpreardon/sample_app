@@ -18,8 +18,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation ul li', count: 4
   end
   
-  test "successful_edit" do
+  test "successful edit with friendly forwarding" do
+    get edit_user_path(@user)
     log_in_as(@user, password: '123456')
+    assert_redirected_to edit_user_url(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
     name = "Foo Bar"
@@ -33,5 +35,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal name, @user.name
     assert_equal email, @user.email
+    assert_not session[:forwarding_url]
   end
 end
