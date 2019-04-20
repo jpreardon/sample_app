@@ -7,6 +7,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
   
   test "unsuccessful edit" do
+    log_in_as(@user, password: '123456')
     get edit_user_path(@user)
     assert_template 'users/edit'
     patch user_path(@user), params: { user: { name: "",
@@ -15,5 +16,22 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               password_confirmation:  "bar" } }
     assert_template 'users/edit'
     assert_select 'div#error_explanation ul li', count: 4
+  end
+  
+  test "successful_edit" do
+    log_in_as(@user, password: '123456')
+    get edit_user_path(@user)
+    assert_template 'users/edit'
+    name = "Foo Bar"
+    email = "foo@bar.com"
+    patch user_path(@user), params: { user: { name: name,
+                                              email: email,
+                                              password:               "",
+                                              password_confirmation:  "" } }
+    assert_not flash.empty?
+    assert_redirected_to @user
+    @user.reload
+    assert_equal name, @user.name
+    assert_equal email, @user.email
   end
 end
