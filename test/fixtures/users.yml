@@ -2,6 +2,7 @@ keith:
   name: Keith Richards
   email: keith@thestones.co.uk
   password_digest: <%= User.digest('password') %>
+  admin: true
   
 mick:
   name: Mick Jagger
