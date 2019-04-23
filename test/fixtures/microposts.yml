@@ -1,15 +1,26 @@
 orange:
   content: "Orange you glad I didn't say banana?"
   created_at: <%= 10.minutes.ago %>
+  user: keith
 
 banana:
   content: "Is that an orange in your pocket, or are you just glad to see me?"
   created_at: <%= 3.years.ago %>
+  user: keith
   
 whateves:
   content: "¯\_(ツ)_/¯"
   created_at: <%= 21.days.ago %>
+  user: keith
   
 most_recent:
   content: "I'm tired"
   created_at: <%= Time.zone.now %>
+  user: keith
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Hipster.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: keith
+<% end %>
