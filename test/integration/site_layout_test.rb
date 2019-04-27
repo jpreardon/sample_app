@@ -26,6 +26,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'nav a[href=?]', user_path(@user)
     assert_select 'nav a[href=?]', edit_user_path(@user)
     assert_select 'nav a[href=?]', logout_path
+    # stats
+    assert_select 'a[href=?]', following_user_path(@user)
+    assert_select 'a[href=?]', followers_user_path(@user)
   end
   
   # Test common links on the home page (both logged in and logged out)
