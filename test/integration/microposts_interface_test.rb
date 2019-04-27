@@ -42,7 +42,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_match "#{@user.microposts.count} microposts", response.body
-    other_user = users(:chuck)
+    other_user = users(:jimbo)
     log_in_as(other_user)
     get root_path
     assert_match "0 microposts", response.body
